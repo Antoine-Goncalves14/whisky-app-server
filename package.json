@@ -1,0 +1,22 @@
+{
+  "name": "project-whisky-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antoine-Goncalves14/whisky-app-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Antoine-Goncalves14/whisky-app-server/issues"
+  },
+  "homepage": "https://github.com/Antoine-Goncalves14/whisky-app-server#readme",
+  "devDependencies": {
+    "eslint": "^8.23.1"
+  }
+}
