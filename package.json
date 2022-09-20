@@ -18,5 +18,8 @@
   "homepage": "https://github.com/Antoine-Goncalves14/whisky-app-server#readme",
   "devDependencies": {
     "eslint": "^8.23.1"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
   }
 }
