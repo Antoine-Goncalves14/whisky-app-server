@@ -9,5 +9,5 @@ app.use(cors());
 app.use('/api/v1', api);
 
 app.listen(app.get('port'), () => {
-  console.log(`Express server listening on port ${app.get('port')}`);
+	console.log(`Express server listening on port ${app.get('port')}`);
 });
