@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const BlogPost = require('../models/blogpost');
 
-router.post('/blog-posts', (req, res) => {
+router.get('/blog-posts', (req, res) => {
 	const posts = [
 		{
 			id: 1,
