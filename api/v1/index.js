@@ -36,4 +36,14 @@ router.post('/blog-posts', (req, res) => {
 	});
 });
 
+router.delete('/blog-posts/:id', (req, res) => {
+	const id = req.params.id;
+	BlogPost.findByIdAndDelete(id, (err, blogPost) => {
+		if (err) {
+			return res.status(500).json(err);
+		}
+		res.status(202).json({ msg: `blog post with id ${blogPost._id} deleted` });
+	});
+});
+
 module.exports = router;
