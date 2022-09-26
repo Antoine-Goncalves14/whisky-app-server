@@ -13,6 +13,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use('/api/v1', api);
+app.use((req, res) => {
+	const err = new Error('404 - Not Found !!');
+	err.status = 404;
+	res.json({ msg: '404 - Not Found !!', err: err });
+});
 
 mongoose.connect('mongodb://localhost:27017/whiskyapp', { useNewUrlParser: true });
 connection.on('error', (err) => {

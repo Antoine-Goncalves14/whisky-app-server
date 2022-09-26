@@ -8,8 +8,18 @@ router.get('/blog-posts', (req, res) => {
 		.exec()
 		.then(blogPost => res.status(200).json(blogPost))
 		.catch(err => res.status(500).json({
-			message: 'blog posts not found:(',
+			message: 'blog posts not found :(',
 			error: err
+		}));
+});
+
+router.get('/blog-posts/:id', (req, res) => {
+	const id = req.params.id;
+	BlogPost.findById(id)
+		.then(blogPost => res.status(200).json(blogPost))
+		.catch(err => res.status(500).json({
+			message: `blog post with id ${id} not found`,
+			error: err,
 		}));
 });
 
