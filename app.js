@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use('/api/v1', api);
 app.use((req, res) => {
-	const err = new Error('404 - Not Found !!');
+	const err = new Error('404 - Not Found !');
 	err.status = 404;
 	res.json({ msg: '404 - Not Found !!', err: err });
 });
