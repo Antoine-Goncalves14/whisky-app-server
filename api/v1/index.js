@@ -53,7 +53,8 @@ router.delete('/blog-posts/:id', (req, res) => {
 
 router.delete('/blog-posts', (req, res) => {
 	const ids = req.query.ids;
-	const allIds = ids.splice(',').map((id) => {
+
+	const allIds = ids.split(',').map((id) => {
 		if (id.match(/^[0-9a-fA-F]{24}$/)) {
 			return mongoose.Types.ObjectId(id);
 		} else {
