@@ -25,7 +25,9 @@ const storage = multer.diskStorage({
 	filename: function(req, file, callback) {
 		crypto.pseudoRandomBytes(16, function(err, raw) {
 			if (err) return callback(err);
-			callback(null, raw.toString('hex') + path.extname(file.originalname));
+			// callback(null, raw.toString('hex') + path.extname(file.originalname));
+			lastUploadedImageName = raw.toString('hex') + path.extname(file.originalname);
+			callback(null, lastUploadedImageName);
 		});
 	}
 });
@@ -39,6 +41,8 @@ router.post('/blog-posts/images', upload.single('image'), (req, res) => {
 	}
 	res.status(201).send({ filename: req.file.filename, file: req.file });
 });
+
+let lastUploadedImageName = '';
 
 router.get('/blog-posts/:id', (req, res) => {
 	const id = req.params.id;
@@ -54,7 +58,7 @@ router.get('/blog-posts/:id', (req, res) => {
 
 router.post('/blog-posts', (req, res) => {
 	console.log('req.body', req.body);
-	const blogPost = new BlogPost(req.body);
+	const blogPost = new BlogPost({...req.body, image: lastUploadedImageName });
 
 	blogPost.save((err, blogPost) => {
 		if (err) {
