@@ -33,7 +33,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage });
 
 // file upload
-router.post('/blog-posts/images', upload.single('blogimage'), (req, res) => {
+router.post('/blog-posts/images', upload.single('image'), (req, res) => {
 	if (!req.file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
 		return res.status(400).json({ msg: 'only image files please !' });
 	}
