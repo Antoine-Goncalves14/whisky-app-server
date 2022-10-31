@@ -39,6 +39,13 @@ passport.deserializeUser((user, cb) => {
 	cb(null, user);
 });
 
+passport.use(new Strategy({
+	usernameField: 'username',
+	passwordField: 'password',
+}, (name, pwg, cb) => {
+  
+}));
+
 const uploadsDir = require('path').join(__dirname, '/uploads');
 app.use(express.static(uploadsDir));
 
