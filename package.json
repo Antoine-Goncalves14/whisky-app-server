@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Antoine-Goncalves14/whisky-app-server#readme",
   "devDependencies": {
+    "@babel/eslint-parser": "^7.5.4",
     "eslint": "^8.23.1"
   },
   "dependencies": {
