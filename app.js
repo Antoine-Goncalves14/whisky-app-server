@@ -41,23 +41,29 @@ passport.deserializeUser((user, cb) => {
 	cb(null, user);
 });
 
-passport.use(new Strategy({
-	usernameField: 'username',
-	passwordField: 'password',
-}, (name, pwd, cb) => {
-	User.findOne({ username: name }, (err, user) => {
-		if (err) {
-			console.error(`could not find ${name} in MongoDB`, err);
-		}
+passport.use(
+	new Strategy(
+		{
+			usernameField: 'username',
+			passwordField: 'password',
+		},
+		(name, pwd, cb) => {
+			User.findOne({ username: name }, (err, user) => {
+				if (err) {
+					console.error(`could not find ${name} in MongoDB`, err);
+				}
 
-		if (user.password !== pwd) {
-			console.log(`wrong password for ${name}`);
-		} else {
-			console.log(`${name} found in MongoDB and authenticated`);
-			cb(null, user);
+				if (user.password !== pwd) {
+					console.log(`wrong password for ${name}`);
+					cb(null, false);
+				} else {
+					console.log(`${name} found in MongoDB and authenticated`);
+					cb(null, user);
+				}
+			});
 		}
-	});
-}));
+	)
+);
 
 const uploadsDir = require('path').join(__dirname, '/uploads');
 app.use(express.static(uploadsDir));
