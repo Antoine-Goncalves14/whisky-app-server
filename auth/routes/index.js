@@ -35,9 +35,12 @@ router.get('/failure', (req, res) => {
 	res.status(401).json({ msg: 'NOT logged in !'} );
 });
 
-router.get('/logout', (req, res) => {
-	req.logOut();
-	res.status(200).json({ msg: 'logged out successfully! '});
+router.get('/logout', (req, res, next) => {
+	req.logout(function(err) {
+		if (err) { return next(err); }
+		res.status(200).json({ msg: 'logged out successfully! '});
+	});
+	
 });
 
 module.exports = router;
