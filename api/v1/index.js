@@ -67,6 +67,10 @@ router.post('/blog-posts', (req, res) => {
 });
 
 router.delete('/blog-posts/:id', (req, res) => {
+	if (!req.isAuthenticated()) {
+		return res.status(401).json({ result: 'KO', msg: 'NOT authorized to delete a blog post'});
+	}
+
 	const id = req.params.id;
 	BlogPost.findByIdAndDelete(id, (err, blogPost) => {
 		if (err) {
