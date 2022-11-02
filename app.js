@@ -27,6 +27,7 @@ app.use(
 		secret: 'my super secret',
 		resave: true,
 		saveUninitialized: true,
+		name: 'whisky-cookie'
 	})
 );
 
